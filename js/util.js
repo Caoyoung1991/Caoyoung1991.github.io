@@ -1,49 +1,30 @@
-var Util = {
-  bind: function(element, name, listener) {
-    element.addEventListener(name, listener, false);
-  },
+function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
 
-  addClass: function(element, className) {
-    var classes = element.className ? element.className.split(' ') : [];
-    if (classes.indexOf(className) < 0) {
-      classes.push(className);
+    return pa.test(ua);
+ }
+
+function isMobile() {
+    return window.screen.width < 767 && hasMobileUA();
+}
+
+function loadjscssfile(filename,filetype){
+
+    if(filetype == "js"){
+        var fileref = document.createElement('script');
+        fileref.setAttribute("type","text/javascript");
+        fileref.setAttribute("src",filename);
+    }else if(filetype == "css"){
+    
+        var fileref = document.createElement('link');
+        fileref.setAttribute("rel","stylesheet");
+        fileref.setAttribute("type","text/css");
+        fileref.setAttribute("href",filename);
     }
-
-    element.className = classes.join(' ');
-    return element;
-  },
-
-  removeClass: function(element, className) {
-    var classes = element.className ? element.className.split(' ') : [];
-    var index = classes.indexOf(className);
-    if (index > -1) {
-      classes.splice(index, 1);
+   if(typeof fileref != "undefined"){
+        document.getElementsByTagName("head")[0].appendChild(fileref);
     }
-
-    element.className = classes.join(' ');
-    return element;
-  },
-
-  request: function(type, url, opts, callback) {
-    var xhr = new XMLHttpRequest();
-    if (typeof opts === 'function') {
-      callback = opts;
-      opts = null;
-    }
-
-    xhr.open(type, url);
-    var fd = new FormData();
-    if (type === 'POST' && opts) {
-      for (var key in opts) {
-        fd.append(key, JSON.stringify(opts[key]));
-      }
-    }
-
-    xhr.onload = function() {
-      callback(JSON.parse(xhr.response));
-    };
-
-    xhr.send(opts ? fd : null);
-  }
-
-};
+    
+}

@@ -1,172 +1,53 @@
-<!DOCTYPE html>
-
-
-  <html class="light page-post">
-
-
+<html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>用户注册与登录 | Yang Cao</title>
+	
+	<title>用户注册与登录</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-    <meta name="keywords" content="web," />
-  
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        <script src="/js/util.js"></script>
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
 
-  <meta name="description" content="注册流程：
-记录用户输入的name, email, password。
-这里的password是客户端传递的经过SHA1计算后的40位Hash字符串，所以服务器端并不知道用户的password。 
-代码：12345678910111213141516171819202122232425_RE_EMAIL = re.compile(r&apos;^[a-z0-9\.\-\_]+\@[a-z0-9\-\_]+(">
-<meta property="og:type" content="article">
-<meta property="og:title" content="用户注册与登录">
-<meta property="og:url" content="http://caoyoung1991.github.io/2016/10/07/user-handle/index.html">
-<meta property="og:site_name" content="Yang Cao">
-<meta property="og:description" content="注册流程：
-记录用户输入的name, email, password。
-这里的password是客户端传递的经过SHA1计算后的40位Hash字符串，所以服务器端并不知道用户的password。 
-代码：12345678910111213141516171819202122232425_RE_EMAIL = re.compile(r&apos;^[a-z0-9\.\-\_]+\@[a-z0-9\-\_]+(">
-<meta property="og:updated_time" content="2016-10-08T00:30:51.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用户注册与登录">
-<meta name="twitter:description" content="注册流程：
-记录用户输入的name, email, password。
-这里的password是客户端传递的经过SHA1计算后的40位Hash字符串，所以服务器端并不知道用户的password。 
-代码：12345678910111213141516171819202122232425_RE_EMAIL = re.compile(r&apos;^[a-z0-9\.\-\_]+\@[a-z0-9\-\_]+(">
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
 
-  
-
-  
-    <link rel="icon" href="/favicon.ico">
-  
-
-  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
-
-
-  
-    <link rel="stylesheet" href="/css/personal-style.css">
-  
-
-  
-
-  
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
 
 </head>
 
 <body>
 
 
-  
-    <span id="toolbox-mobile" class="toolbox-mobile">box</span>
-  
-
-  <div class="post-header CENTER">
-   
-  <div class="toolbox">
-    <a class="toolbox-entry" href="/">
-      <span class="toolbox-entry-text">box</span>
-      <i class="icon-angle-down"></i>
-      <i class="icon-home"></i>
-    </a>
-    <ul class="list-toolbox">
-      
-        <li class="item-toolbox">
-          <a
-            class="ROUND_RECT"
-            href="/category/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            category
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="ROUND_RECT"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            tag
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="ROUND_RECT"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            about
-          </a>
-        </li>
-      
-    </ul>
-  </div>
+<h2 class="title">用户注册与登录</h2>
+<!---
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2016年10月7日
 
 
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+
+
+
+ </div>
+--->
 </div>
 
-
-  <div id="toc" class="toc-article">
-    <strong class="toc-title">Posts List</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册流程："><span class="toc-text">注册流程：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登录流程："><span class="toc-text">登录流程：</span></a></li></ol>
-  </div>
-
-
-
-<div class="content content-post CENTER">
-   <article id="post-user-handle" class="article article-type-post" itemprop="blogPost">
-  <header class="article-header">
-    <h1 class="post-title">用户注册与登录</h1>
-
-    <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2016.10.07</span>
-      </span>
-
-      
-        <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Yang Cao</span>
-        </span>
-      
-
-      
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/Web/">Web</a>
-  </span>
-
-
-
-      
-        <span>
-          <i class="icon-comment"></i>
-          <a href="http://www.forsigner.com/2016/10/07/user-handle/#disqus_thread"></a>
-        </span>
-      
-
-    </div>
-  </header>
-
-  <div class="article-content">
-    
-      <h3 id="注册流程："><a href="#注册流程：" class="headerlink" title="注册流程："></a>注册流程：</h3><ul>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册流程："><span class="toc-text">注册流程：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登录流程："><span class="toc-text">登录流程：</span></a></li></ol>
+<h3 id="注册流程："><a href="#注册流程：" class="headerlink" title="注册流程："></a>注册流程：</h3><ul>
 <li>记录用户输入的name, email, password。</li>
 <li>这里的password是客户端传递的经过SHA1计算后的40位Hash字符串，所以服务器端并不知道用户的password。 </li>
 <li>代码：<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">_RE_EMAIL = re.compile(<span class="string">r'^[a-z0-9\.\-\_]+\@[a-z0-9\-\_]+(\.[a-z0-9\-\_]+)&#123;1,4&#125;$'</span>)</div><div class="line">_RE_SHA1 = re.compile(<span class="string">r'^[0-9a-f]&#123;40&#125;$'</span>)</div><div class="line"></div><div class="line"><span class="meta">@post('/api/users')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">api_register_user</span><span class="params">(*, email, name, passwd)</span>:</span></div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> name <span class="keyword">or</span> <span class="keyword">not</span> name.strip():</div><div class="line">        <span class="keyword">raise</span> APIValueError(<span class="string">'name'</span>)</div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> email <span class="keyword">or</span> <span class="keyword">not</span> _RE_EMAIL.match(email):</div><div class="line">        <span class="keyword">raise</span> APIValueError(<span class="string">'email'</span>)</div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> passwd <span class="keyword">or</span> <span class="keyword">not</span> _RE_SHA1.match(passwd):</div><div class="line">        <span class="keyword">raise</span> APIValueError(<span class="string">'passwd'</span>)</div><div class="line">    users = <span class="keyword">yield</span> <span class="keyword">from</span> User.findAll(<span class="string">'email=?'</span>, [email])</div><div class="line">    <span class="keyword">if</span> len(users) &gt; <span class="number">0</span>:</div><div class="line">        <span class="keyword">raise</span> APIError(<span class="string">'register:failed'</span>, <span class="string">'email'</span>, <span class="string">'Email is already in use.'</span>)</div><div class="line">    uid = next_id()</div><div class="line">    sha1_passwd = <span class="string">'%s:%s'</span> % (uid, passwd)</div><div class="line">    user = User(id=uid, name=name.strip(), email=email, passwd=hashlib.sha1(sha1_passwd.encode(<span class="string">'utf-8'</span>)).hexdigest(), image=<span class="string">'http://www.gravatar.com/avatar/%s?d=mm&amp;s=120'</span> % hashlib.md5(email.encode(<span class="string">'utf-8'</span>)).hexdigest())</div><div class="line">    <span class="keyword">yield</span> <span class="keyword">from</span> user.save()</div><div class="line">    <span class="comment"># make session cookie:</span></div><div class="line">    r = web.Response()</div><div class="line">    r.set_cookie(COOKIE_NAME, user2cookie(user, <span class="number">86400</span>), max_age=<span class="number">86400</span>, httponly=<span class="keyword">True</span>)</div><div class="line">    user.passwd = <span class="string">'******'</span></div><div class="line">    r.content_type = <span class="string">'application/json'</span></div><div class="line">    r.body = json.dumps(user, ensure_ascii=<span class="keyword">False</span>).encode(<span class="string">'utf-8'</span>)</div><div class="line">    <span class="keyword">return</span> r</div></pre></td></tr></table></figure>
@@ -188,159 +69,30 @@
 </ul>
 <p><strong>廖雪峰网站python学习记录</strong></p>
 
-    
-  </div>
-</article>
 
-</div>
+<!--<a href="http://caoyoung1991.github.io/2016/10/07/user-handle/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'undefined'; // required: replace example with your forum shortname
 
-
-  <div class="text-center donation">
-    <div class="inner-donation">
-      <span class="btn-donation">支持一下</span>
-      <div class="donation-body">
-        <div class="tip text-center">扫一扫，支持forsigner</div>
-        <ul class="theme.donation.items.length">
-        
-          <li class="item">
-            <img src="/images/qr-wechat.png" alt="">
-          </li>
-        
-          <li class="item">
-            <img src="/images/qr-alipay.png" alt="">
-          </li>
-        
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-
-
-  <a id="backTop" class="back-top">
-    <i class="icon-angle-up"></i>
-  </a>
-
-
-
-
-  <div class="modal" id="modal">
-  <span id="cover" class="cover hide"></span>
-  <div id="modal-dialog" class="modal-dialog hide-dialog">
-    <div class="modal-header">
-      <span id="close" class="btn-close">Close</span>
-    </div>
-    <hr>
-    <div class="modal-body">
-      <ul class="list-toolbox">
-        
-          <li class="item-toolbox">
-            <a
-              class="ROUND_RECT"
-              href="/category/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              category
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="ROUND_RECT"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              tag
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="ROUND_RECT"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              about
-            </a>
-          </li>
-        
-      </ul>
-
-    </div>
-  </div>
-</div>
-
-
-
-  
-      <div class="fexo-comments comments-post">
-    
-  <section class="disqus-comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-
-  <script>
-    var disqus_shortname = 'forsigner';
-    
-    var disqus_url = 'http://caoyoung1991.github.io/2016/10/07/user-handle/';
-    
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
-  </script>
-
-  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
-
-
-
-    
-
-
-
-
-  </div>
-
-  
-
-  <script type="text/javascript">
-  function loadScript(url, callback) {
-    var script = document.createElement('script')
-    script.type = 'text/javascript';
-
-    if (script.readyState) { //IE
-      script.onreadystatechange = function() {
-        if (script.readyState == 'loaded' ||
-          script.readyState == 'complete') {
-          script.onreadystatechange = null;
-          callback();
-        }
-      };
-    } else { //Others
-      script.onload = function() {
-        callback();
-      };
-    }
-
-    script.src = url;
-    document.getElementsByTagName('head')[0].appendChild(script);
-  }
-
-  window.onload = function() {
-    loadScript('/js/bundle.js?235683', function() {
-      // load success
-    });
-  }
 </script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=undefined&web_id=undefined" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
 
 </body>
 </html>
